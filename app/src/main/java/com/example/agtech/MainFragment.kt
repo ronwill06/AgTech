@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainFragment: Fragment() {
 
+    companion object {
+        fun newInstance(): MainFragment = MainFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +38,7 @@ class MainFragment: Fragment() {
         }
     }
 
-    private class MainViewHolder: RecyclerView.ViewHolder() {
+    private class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     }
