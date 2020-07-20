@@ -1,6 +1,5 @@
 package com.example.agtech
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,20 +23,26 @@ class MainFragment: Fragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main, container, false)
-        activity?.let {
-            view.mainRecyclerView.layoutManager = LinearLayoutManager(it)
-            val adapter = MainRecyclerViewAdapter(it, listOf("Corn", "Rice", "Peas"))
-            view.mainRecyclerView.adapter = adapter
-        }
+        view.mainRecyclerView.layoutManager = LinearLayoutManager(activity)
+        val adapter = MainRecyclerViewAdapter(listOf("Corn", "Rice", "Peas"))
+        view.mainRecyclerView.adapter = adapter
         return view
     }
 
-    private class MainRecyclerViewAdapter(private val context: Context, private val crops: List<String>): RecyclerView.Adapter<MainViewHolder>() {
+
+    private class MainRecyclerViewAdapter(
+        private val crops: List<String>
+    ) : RecyclerView.Adapter<MainViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-           val view = LayoutInflater.from(context)
-                .inflate(R.layout.viewhholder_crop_item, parent, false)
+            val view = LayoutInflater.from(parent.context)
+                .inflate(viewType, parent, false)
             return MainViewHolder(view)
+        }
+
+        override fun getItemViewType(position: Int): Int {
+            super.getItemViewType(position)
+            return R.layout.viewhholder_crop_item
         }
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
@@ -45,7 +50,7 @@ class MainFragment: Fragment() {
         }
 
         override fun getItemCount(): Int {
-           return crops.size
+            return crops.count()
         }
     }
 
