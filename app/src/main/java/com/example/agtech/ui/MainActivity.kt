@@ -1,7 +1,8 @@
-package com.example.agtech
+package com.example.agtech.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.agtech.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,7 +11,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container, MainFragment.newInstance())
+            .add(
+                R.id.container,
+                MainFragment.newInstance()
+            )
             .commit()
     }
 }
