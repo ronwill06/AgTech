@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.agtech.domain.CropCategory
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class MainFragment: Fragment() {
@@ -24,14 +25,14 @@ class MainFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         view.mainRecyclerView.layoutManager = LinearLayoutManager(activity)
-        val adapter = MainRecyclerViewAdapter(listOf("Corn", "Rice", "Peas"))
+        val adapter = MainRecyclerViewAdapter(CropCategory.values())
         view.mainRecyclerView.adapter = adapter
         return view
     }
 
 
     private class MainRecyclerViewAdapter(
-        private val crops: List<String>
+        private val crops: Array<CropCategory>
     ) : RecyclerView.Adapter<MainViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -56,9 +57,9 @@ class MainFragment: Fragment() {
 
     private class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun configureView(cropText: String) {
+        fun configureView(cropCategory: CropCategory) {
             val cropTextView = itemView.findViewById<TextView>(R.id.crop_type_text_view)
-            cropTextView.text = cropText
+            cropTextView.text = cropCategory.name
         }
     }
 }

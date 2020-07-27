@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AgTech</string>
+    <string name="predictions">Predictions</string>
 </resources>
