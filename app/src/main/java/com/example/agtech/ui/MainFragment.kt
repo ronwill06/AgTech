@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agtech.R
 import com.example.agtech.domain.CropCategory
+import com.example.agtech.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
-interface Navigator {
-    fun navigateToPredictions()
-}
-
 class MainFragment: Fragment() {
+   private val viewModel = MainViewModel()
+
 
     companion object {
         fun newInstance(): MainFragment =
@@ -32,9 +31,7 @@ class MainFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         view.mainRecyclerView.layoutManager = LinearLayoutManager(activity)
-        val adapter = MainRecyclerViewAdapter(
-            CropCategory.values()
-        )
+        val adapter = MainRecyclerViewAdapter(viewModel.cropCategories)
         view.mainRecyclerView.adapter = adapter
         return view
     }
