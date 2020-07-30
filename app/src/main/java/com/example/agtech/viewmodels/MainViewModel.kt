@@ -7,5 +7,4 @@ class MainViewModel : ViewModel() {
 
     val cropCategories: Array<CropCategory>
         get() = CropCategory.values()
-
 }

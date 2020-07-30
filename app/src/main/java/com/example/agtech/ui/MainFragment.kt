@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agtech.R
@@ -15,8 +16,7 @@ import com.example.agtech.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class MainFragment: Fragment() {
-   private val viewModel = MainViewModel()
-
+   private lateinit var viewModel: MainViewModel
 
     companion object {
         fun newInstance(): MainFragment =
@@ -31,9 +31,14 @@ class MainFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         view.mainRecyclerView.layoutManager = LinearLayoutManager(activity)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val adapter = MainRecyclerViewAdapter(viewModel.cropCategories)
         view.mainRecyclerView.adapter = adapter
-        return view
     }
 
 
