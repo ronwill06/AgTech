@@ -77,7 +77,7 @@ class MainFragment: Fragment() {
         override fun onClick(p0: View?) {
             val activity = p0?.context as AppCompatActivity
             activity.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.container, PredictionFragment.newInstance())
+                ?.replace(R.id.container, PredictionsFragment.newInstance())
                 ?.commit()
         }
     }
