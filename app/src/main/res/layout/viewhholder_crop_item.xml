@@ -2,18 +2,41 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/crop_type_text_view"
+        android:id="@+id/year_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
         android:layout_marginStart="8dp"
-        tools:text="Corn" />
+        tools:text="2009" />
 
+    <Spinner
+        android:id="@+id/crop_category_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="64dp"
+        />
+
+    <Spinner
+        android:id="@+id/crop_type_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="64dp"
+        />
+
+    <CheckBox
+        android:id="@+id/complete_check_box"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="64dp"
+        />
 </LinearLayout>

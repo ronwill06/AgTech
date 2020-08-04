@@ -5,6 +5,6 @@ import com.example.agtech.HttpClient
 
 class PredictionsViewModel: ViewModel() {
 
-    private val predictionsService = HttpClient.predictionsService
+  //  private val predictionsService = HttpClient.predictionsService
 
 }

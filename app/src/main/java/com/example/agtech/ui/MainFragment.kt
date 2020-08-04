@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.agtech.CropSelectionManager
 import com.example.agtech.R
-import com.example.agtech.domain.CropCategory
+import com.example.agtech.listeners.CropCategoryListener
+import com.example.agtech.listeners.CropTypeListener
 import com.example.agtech.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.android.synthetic.main.viewhholder_crop_item.view.*
 
 class MainFragment: Fragment() {
    private lateinit var viewModel: MainViewModel
@@ -43,7 +46,7 @@ class MainFragment: Fragment() {
 
 
     private class MainRecyclerViewAdapter(
-        private val crops: Array<CropCategory>
+        private val years: Array<String>
     ) : RecyclerView.Adapter<MainViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -58,27 +61,44 @@ class MainFragment: Fragment() {
         }
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-            holder.configureView(crops[position])
-            holder.itemView.setOnClickListener {  }
+            holder.configureView(years[position])
         }
 
         override fun getItemCount(): Int {
-            return crops.count()
+            return years.count()
         }
     }
 
-    private class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    private class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun configureView(cropCategory: CropCategory) {
-            val cropTextView = itemView.findViewById<TextView>(R.id.crop_type_text_view)
-            cropTextView.text = cropCategory.name
+        init {
+            itemView.crop_category_spinner.adapter = ArrayAdapter
+                .createFromResource(
+                    itemView.context,
+                    R.array.crop_categories,
+                    android.R.layout.simple_spinner_item
+                ).also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
+
+            itemView.crop_category_spinner.onItemSelectedListener = CropCategoryListener()
+
+            itemView.crop_type_spinner.adapter = ArrayAdapter
+                .createFromResource(
+                    itemView.context,
+                    R.array.crop_types,
+                    android.R.layout.simple_spinner_item
+                ).also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
+
+            itemView.crop_type_spinner.onItemSelectedListener = CropTypeListener()
         }
 
-        override fun onClick(p0: View?) {
-            val activity = p0?.context as AppCompatActivity
-            activity.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.container, PredictionsFragment.newInstance())
-                ?.commit()
+        fun configureView(year: String) {
+            val cropTextView = itemView.findViewById<TextView>(R.id.year_text_view)
+            cropTextView.text = year
+            itemView.complete_check_box.setOnCheckedChangeListener { _, _ ->  CropSelectionManager.addCropCategoryAndCropType(year) }
         }
     }
 }

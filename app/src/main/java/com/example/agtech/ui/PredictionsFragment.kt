@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.agtech.R
 import com.example.agtech.viewmodels.PredictionsViewModel
+import kotlinx.android.synthetic.main.fragment_crop_detail.view.*
 
 class PredictionsFragment : Fragment() {
 
@@ -21,6 +22,7 @@ class PredictionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel = ViewModelProvider(this).get(PredictionsViewModel::class.java)
+        view.predictions_text_view.text = "Canola"
     }
 
     companion object {

@@ -1,6 +1,59 @@
 <resources>
     <string name="app_name">AgTech</string>
-    <string name="predictions">Predictions</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="predictions">Predictions:</string>
+    <string name="done">Done</string>
+
+    <string-array name="crop_categories">
+        <item>Canola</item>
+        <item>Cereal</item>
+        <item>Grass</item>
+        <item>Legumes</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="crop_types">
+        <item>Barley</item>
+        <item>Beans</item>
+        <item>Berries</item>
+        <item>Borage</item>
+        <item>Buckwheat</item>
+        <item>Camelina</item>
+        <item>Canary Seed</item>
+        <item>Canola</item>
+        <item>Cereals</item>
+        <item>Corn</item>
+        <item>Fallow</item>
+        <item>Flaxseed</item>
+        <item>Fruits</item>
+        <item>Grassland</item>
+        <item>Hemp</item>
+        <item>Herbs</item>
+        <item>Lentils</item>
+        <item>Millet</item>
+        <item>Mustard</item>
+        <item>Nursery</item>
+        <item>Oats</item>
+        <item>Orchards</item>
+        <item>Others</item>
+        <item>Other Vegetables</item>
+        <item>Pasture and Forages</item>
+        <item>Peas</item>
+        <item>Potatoes</item>
+        <item>Rye</item>
+        <item>Safflower</item>
+        <item>Shrubland</item>
+        <item>Sod</item>
+        <item>Soybeans</item>
+        <item>Spelt</item>
+        <item>Spring Wheat</item>
+        <item>Sugarbeets</item>
+        <item>Sunflower</item>
+        <item>Too Wet To Be Seeded</item>
+        <item>Triticale</item>
+        <item>Vegetables</item>
+        <item>Vetch</item>
+        <item>Wetland</item>
+        <item>Wheat</item>
+        <item>Winter Wheat</item>
+    </string-array>
 </resources>
