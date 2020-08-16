@@ -16,6 +16,8 @@ class PredictionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
+
         return inflater.inflate(R.layout.fragment_prediction, container, false)
     }
 

@@ -11,25 +11,25 @@
         android:id="@+id/year_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
         tools:text="2009" />
 
     <Spinner
         android:id="@+id/crop_category_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="24dp"
         />
 
     <Spinner
         android:id="@+id/crop_type_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="24dp"
         />
 
     <CheckBox
@@ -37,6 +37,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="24dp"
         />
 </LinearLayout>
