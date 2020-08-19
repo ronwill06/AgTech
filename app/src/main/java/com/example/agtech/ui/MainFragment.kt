@@ -1,11 +1,10 @@
 package com.example.agtech.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.app.NavUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +25,11 @@ class MainFragment: Fragment() {
             MainFragment()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true);
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,6 +46,28 @@ class MainFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val adapter = MainRecyclerViewAdapter(viewModel.cropCategories)
         view.mainRecyclerView.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.done_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_done -> {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, PredictionsFragment.newInstance())
+                ?.addToBackStack(null)
+                ?.commit()
+            true
+        }
+        android.R.id.home -> {
+            NavUtils.navigateUpFromSameTask(activity!!)
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
 

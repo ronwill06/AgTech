@@ -7,13 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.PredictionsFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="?attr/homeAsUpIndicator"/>
-
     <TextView
         android:id="@+id/predictions_title"
         android:layout_width="wrap_content"

@@ -2,6 +2,7 @@
     <string name="app_name">AgTech</string>
     <string name="predictions">Predictions:</string>
     <string name="done">Done</string>
+    <string name="dismiss">Dismiss</string>
 
     <string-array name="crop_categories">
         <item>Canola</item>
